@@ -1,0 +1,48 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+    <record model="ir.ui.view" id="yu_expense_inherited">
+	  <field name="name">hr.expense.form2</field>
+      <field name="model">hr.expense</field>
+	  <field name="inherit_id" ref="hr_expense.hr_expense_form_view"/>
+      <field name="arch" type="xml">
+		  <xpath expr="//form/sheet/group" position="inside">
+                <group>
+                </group>
+                <group>
+                    <field name="x_hotel_fees" />
+                    <field name="x_hotel_normal" />
+                    <field name="x_car_ship" />
+                    <field name="x_city_transportation" />
+                    <field name="x_tolls" />
+                    <field name="x_air_ticket" />
+                    <field name="x_subsidy_count" />
+                    <field name="x_other_fee" />
+                    <field name="x_trip_count" />
+                </group>
+                <group>
+                    <field name="x_start_date" />
+                    <field name="x_destination" />
+                    <field name="x_bill_date" />
+                    <field name="x_invoice_code" />
+                    <field name="x_invoice_num" />
+                    <field name="x_invoice_company" />
+                    <field name="x_contract" />
+                    <field name="x_financial" />
+                </group>
+			</xpath>
+			<xpath expr="//field[@name='quantity']" position="attributes">
+				<attribute name="groups">base.group_no_one</attribute>
+			</xpath>
+			<xpath expr="//label[@for='quantity']" position="attributes">
+				<attribute name="groups">base.group_no_one</attribute>
+			</xpath>
+			<xpath expr="//field[@name='tax_ids']" position="after">
+                    <field name="x_total_zh" />
+			</xpath>
+      </field>
+    </record>
+
+
+  </data>
+</odoo>

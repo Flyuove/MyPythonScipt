@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<template id="report_hr_holidays">
+        <t t-call="report.html_container">
+            <t t-foreach="docs" t-as="o">
+                    <div class="page" align="center">
+
+	<div style="width:825px; ">
+		<div align="center" >
+			<h1 >请假报告单</h1>
+			<p style="margin:0; text-align:right; padding-right: 20%;font-size:23px;">编号:</p>
+		</div>
+        <table class="table table-bordered" style="font-size:23px;" >
+				<tr style="border:1px solid black;" align="center">
+					<td style="border:1px solid black;width:20%; word-spacing: 50px;" >姓 名</td>
+					<td style="border:1px solid black;width:30%;" ><span t-field="o.employee_id"/> </td>
+					<td style="border:1px solid black;width:20%;" >所在部门/<br/>岗位</td>
+					<td style="border:1px solid black;width:30%;" >数据技术与分析部</td>
+                </tr>
+				<tr style="border:1px solid black;" align="center"> 
+					<td style="border:1px solid black;" >起止时间</td>
+					<td style="border:1px solid black;" ><span t-field="o.date_from"   t-field-options='{"format": "yMMdd HH:mm:ss"}'/>  <br/><span t-field="o.date_to"  t-field-options='{"format": "yMMdd HH:mm:ss"}'/>  </td>
+					<td style="border:1px solid black; word-spacing: 50px" >去 向</td>
+					<td style="border:1px solid black;" > <span t-esc="'%s' % o.name.split(u'；')[0]"/>  </td>
+                </tr>
+				<tr style="border:1px solid black;" align="center"> 
+					<td style="border:1px solid black;word-spacing: 50px" >假 别</td>
+					<td style="border:1px solid black;" ><span t-field="o.holiday_status_id"/>  </td>
+					<td style="border:1px solid black;word-spacing: 50px" > 事 由</td>
+					<td style="border:1px solid black;" ><span t-esc="'%s' % o.name.split(u'；')[1]"/>  </td>
+                </tr>
+				<tr style="border:1px solid black;"> 
+					<td style="border:1px solid black;" colspan="4"  align="left">
+						<p>组织人力部门意见</p>
+						<br/>
+						<p>1.  符合_____假休假规定，休假_____天。<span style="margin: 0 65px;">审核人签字：</span></p>
+						<br/>
+						<p>2.  □未申请出国（境）；</p>
+						<p style="margin:0 25px">  □申请出国（境），审批手续另附。<span style="margin: 0 115px;">审核人签字：</span></p>
+						<br/>
+					</td>
+                </tr>
+				<tr style="border:1px solid black;"> 
+					<td style="border:1px solid black;" colspan="2"  align="left">
+						<p>一级审批人意见</p>
+						<br/>
+						<br/>
+						<br/>
+						<br/>
+						<br/>
+						<p align="right" style="padding-right: 40%;">签字:</p>
+						<p align="right" style="padding-right: 10%;">年<span style="margin: 0 50px;">月</span> 日</p>
+					</td>
+					<td style="border:1px solid black;" colspan="2"  align="left">
+						<p>二级审批人意见</p>
+						<br/>
+						<br/>
+						<br/>
+						<br/>
+						<br/>
+						<p align="right" style="padding-right: 40%;">签字:</p>
+						<p align="right" style="padding-right: 10%;">年<span style="margin: 0 50px;">月</span> 日</p>
+					</td>
+                </tr>
+				<tr style="border:1px solid black;"> 
+					<td style="border:1px solid black;" colspan="4" align="left">
+						<p>本人已将请假审批情况向领导报备。</p>
+						<br/>
+						<p align="right" style="padding-right: 30%;">请假人签字：</p>
+						<p align="right" style="padding-right: 26%;">年<span style="margin: 0 50px;">月</span> 日</p>
+					</td>
+                </tr>
+        </table>
+	</div>
+
+                    </div>
+            </t>
+        </t>
+    </template>
+
+    <report
+        id="action_report_hr_holidays"
+        string="请假报告单"
+        model="hr.holidays"
+        report_type="qweb-pdf"
+        name="contract_yu.report_hr_holidays"
+        file="contract_yu.report_hr_holidays"
+    />
+
+</odoo>

@@ -1,0 +1,50 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+    <record model="ir.actions.act_window" id="yu_financial_action">
+      <field name="name">financial appr</field>
+      <field name="res_model">yu.financial</field>
+      <field name="view_model">tree</field>
+    </record>
+
+    <record model="ir.ui.view" id="yu_financial_form_view">
+      <field name="name">financial.form</field>
+      <field name="model">yu.financial</field>
+      <field name="arch" type="xml">
+		 <form string="Financial">
+    <sheet>
+    <group>
+    	<group>
+        <field name="name"/>
+        <field name="code"/>
+        <field name="amount"/>
+    	</group>
+    	<group>
+        <field name="user_id"/>
+        <field name="description"/>
+    	</group>
+    </group>
+    </sheet>
+	</form>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="yu_financial_tree_view">
+      <field name="name">financial.tree</field>
+      <field name="model">yu.financial</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="code"/>
+          <field name="amount"/>
+          <field name="user_id"/>
+        </tree>
+      </field>
+    </record>
+
+    <!-- menu categories -->
+    <menuitem name="财务立项管理" id="yu_financial_appr" parent="hr_expense.menu_hr_expense_configuration"
+ action="yu_financial_action"  sequence="20"/>
+
+  </data>
+</odoo>
